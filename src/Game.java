@@ -31,7 +31,9 @@ public class Game extends JPanel implements ActionListener{
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        g.drawImage(snake.getSnakeImage(), snake.getxPos(), snake.getyPos(), this);
+        for(int i = 0; i < snake.getSnakeLen(); i++) {
+            g.drawImage(snake.getSnakeImage(), snake.getxPos(i), snake.getyPos(i), this);
+        }
         g.drawImage(apple.getAppleImage(), apple.getxPos(), apple.getyPos(), this);
     }
 
