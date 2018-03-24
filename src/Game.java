@@ -4,6 +4,8 @@ import javax.swing.Timer;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Game extends JPanel implements ActionListener{
 
@@ -18,6 +20,10 @@ public class Game extends JPanel implements ActionListener{
     private Timer gameTimer;
 
     public Game() {
+
+        addKeyListener(new KeyboardChecker());
+
+        setFocusable(true);
         setBackground(Color.BLACK);
         setPreferredSize(new Dimension(GAME_WINDOW_WIDTH, GAME_WINDOW_HEIGHT));
 
@@ -31,17 +37,43 @@ public class Game extends JPanel implements ActionListener{
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        for(int i = 0; i < snake.getSnakeLen(); i++) {
-            g.drawImage(snake.getSnakeImage(), snake.getxPos(i), snake.getyPos(i), this);
-        }
+//        for(int i = 0; i < snake.getSnakeLen(); i++) {
+//            g.drawImage(snake.getSnakeImage(), snake.getxPos(i), snake.getyPos(i), this);
+//        }
+        g.drawImage(snake.getSnakeImage(), snake.getxPos(0), snake.getyPos(0), this);
         g.drawImage(apple.getAppleImage(), apple.getxPos(), apple.getyPos(), this);
+
+        Toolkit.getDefaultToolkit().sync();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
-        apple.setxPos(apple.getxPos() + 10);
-        apple.setyPos(apple.getyPos() + 10);
+        snake.move();
         repaint();
+    }
+
+    private class KeyboardChecker extends KeyAdapter {
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+
+            int keyPressed = e.getKeyCode();
+
+            if (keyPressed == KeyEvent.VK_UP){
+                snake.setDirection(Snake.DirectionType.DIRECTION_UP);
+            }
+            if (keyPressed == KeyEvent.VK_DOWN){
+                snake.setDirection(Snake.DirectionType.DIRECTION_DOWN);
+            }
+            if (keyPressed == KeyEvent.VK_LEFT){
+                snake.setDirection(Snake.DirectionType.DIRECTION_LEFT);
+            }
+            if (keyPressed == KeyEvent.VK_RIGHT){
+                snake.setDirection(Snake.DirectionType.DIRECTION_RIGHT);
+            }
+            else {
+                /* catch error or message that move not supported */
+            }
+        }
     }
 }

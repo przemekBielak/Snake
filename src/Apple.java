@@ -31,6 +31,8 @@ public class Apple {
     public Apple() {
         appleIcon = new ImageIcon("Images/red.png");
         appleImage = appleIcon.getImage();
+        xPos = 240;
+        yPos = 240;
     }
 
 }

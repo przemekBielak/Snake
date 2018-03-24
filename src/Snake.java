@@ -2,9 +2,30 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Snake {
-    private int snakeLen;
+
+    public enum DirectionType {
+            DIRECTION_UP
+        ,   DIRECTION_DOWN
+        ,   DIRECTION_LEFT
+        ,   DIRECTION_RIGHT
+    }
+
+    private int SNAKE_IMAGE_WIDTH = 10;
+    private int SNAKE_IMAGE_HEIGHT = 10;
+
     private int xPos[];
     private int yPos[];
+    private int snakeLen;
+    private DirectionType direction;
+
+
+    public DirectionType getDirection() {
+        return direction;
+    }
+
+    public void setDirection(DirectionType direction) {
+        this.direction = direction;
+    }
 
     public int getSnakeLen() {
         return snakeLen;
@@ -41,12 +62,30 @@ public class Snake {
         snakeIcon = new ImageIcon("Images/green.png");
         snakeImage = snakeIcon.getImage();
         snakeLen = 3;
+        direction = DirectionType.DIRECTION_UP;
         xPos = new int[1600];
         yPos = new int[1600];
 
         for(int i = 0; i < snakeLen; i++) {
             xPos[i] = 140;
             yPos[i] = 140 + 10 * i;
+        }
+    }
+
+    public void move() {
+        switch (direction) {
+            case DIRECTION_UP:
+                yPos[0] -= SNAKE_IMAGE_HEIGHT;
+                break;
+            case DIRECTION_DOWN:
+                yPos[0] += SNAKE_IMAGE_HEIGHT;
+                break;
+            case DIRECTION_LEFT:
+                xPos[0] -= SNAKE_IMAGE_WIDTH;
+                break;
+            case DIRECTION_RIGHT:
+                xPos[0] += SNAKE_IMAGE_WIDTH;
+                break;
         }
     }
 
