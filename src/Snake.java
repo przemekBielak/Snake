@@ -73,6 +73,11 @@ public class Snake {
     }
 
     public void move() {
+        for(int i = snakeLen; i > 0; i--) {
+            xPos[i] = xPos[i - 1];
+            yPos[i] = yPos[i - 1];
+        }
+
         switch (direction) {
             case DIRECTION_UP:
                 yPos[0] -= SNAKE_IMAGE_HEIGHT;
@@ -86,6 +91,7 @@ public class Snake {
             case DIRECTION_RIGHT:
                 xPos[0] += SNAKE_IMAGE_WIDTH;
                 break;
+
         }
     }
 

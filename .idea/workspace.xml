@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9857fec0-8532-4201-8b7c-a86afb7258da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Apple.java" afterPath="$PROJECT_DIR$/src/Apple.java" />
-      <change beforePath="$PROJECT_DIR$/src/Application.java" afterPath="$PROJECT_DIR$/src/Application.java" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/out/production/snake/Game$KeyboardChecker.class" afterPath="$PROJECT_DIR$/out/production/snake/Game$KeyboardChecker.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/snake/Game.class" afterPath="$PROJECT_DIR$/out/production/snake/Game.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/snake/Snake$1.class" afterPath="$PROJECT_DIR$/out/production/snake/Snake$1.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/snake/Snake.class" afterPath="$PROJECT_DIR$/out/production/snake/Snake.class" />
       <change beforePath="$PROJECT_DIR$/src/Game.java" afterPath="$PROJECT_DIR$/src/Game.java" />
       <change beforePath="$PROJECT_DIR$/src/Snake.java" afterPath="$PROJECT_DIR$/src/Snake.java" />
     </list>
@@ -17,11 +20,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Game.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-41">
-              <caret line="33" column="5" lean-forward="true" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+            <state relative-caret-position="408">
+              <caret line="39" column="39" lean-forward="false" selection-start-line="39" selection-start-column="39" selection-end-line="39" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -39,11 +42,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Snake.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Snake.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Snake.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1241">
-              <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+            <state relative-caret-position="190">
+              <caret line="63" column="20" lean-forward="false" selection-start-line="63" selection-start-column="20" selection-end-line="63" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#445#446#0" expanded="true" />
@@ -117,9 +120,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/Apple.java" />
-        <option value="$PROJECT_DIR$/src/Snake.java" />
         <option value="$PROJECT_DIR$/src/Application.java" />
         <option value="$PROJECT_DIR$/src/Game.java" />
+        <option value="$PROJECT_DIR$/src/Snake.java" />
       </list>
     </option>
   </component>
@@ -305,12 +308,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1521913262369</updated>
-      <workItem from="1521913265287" duration="8300000" />
+      <workItem from="1521913265287" duration="10483000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8300000" />
+    <option name="totallyTimeSpent" value="10483000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1294" height="1417" extended-state="0" />
@@ -375,34 +378,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Snake.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1241">
-          <caret line="73" column="0" lean-forward="true" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#445#446#0" expanded="true" />
-            <element signature="e#477#478#0" expanded="true" />
-            <element signature="e#534#535#0" expanded="true" />
-            <element signature="e#576#577#0" expanded="true" />
-            <element signature="e#608#609#0" expanded="true" />
-            <element signature="e#639#640#0" expanded="true" />
-            <element signature="e#684#685#0" expanded="true" />
-            <element signature="e#724#725#0" expanded="true" />
-            <element signature="e#824#825#0" expanded="true" />
-            <element signature="e#857#858#0" expanded="true" />
-            <element signature="e#892#893#0" expanded="true" />
-            <element signature="e#924#925#0" expanded="true" />
-            <element signature="e#970#971#0" expanded="true" />
-            <element signature="e#1007#1008#0" expanded="true" />
-            <element signature="e#1053#1054#0" expanded="true" />
-            <element signature="e#1090#1091#0" expanded="true" />
-            <element signature="e#1125#1126#0" expanded="true" />
-            <element signature="e#1157#1158#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Apple.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
@@ -425,10 +400,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-41">
-          <caret line="33" column="5" lean-forward="true" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+        <state relative-caret-position="408">
+          <caret line="39" column="39" lean-forward="false" selection-start-line="39" selection-start-column="39" selection-end-line="39" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Snake.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="63" column="20" lean-forward="false" selection-start-line="63" selection-start-column="20" selection-end-line="63" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#445#446#0" expanded="true" />
+            <element signature="e#477#478#0" expanded="true" />
+            <element signature="e#534#535#0" expanded="true" />
+            <element signature="e#576#577#0" expanded="true" />
+            <element signature="e#608#609#0" expanded="true" />
+            <element signature="e#639#640#0" expanded="true" />
+            <element signature="e#684#685#0" expanded="true" />
+            <element signature="e#724#725#0" expanded="true" />
+            <element signature="e#824#825#0" expanded="true" />
+            <element signature="e#857#858#0" expanded="true" />
+            <element signature="e#892#893#0" expanded="true" />
+            <element signature="e#924#925#0" expanded="true" />
+            <element signature="e#970#971#0" expanded="true" />
+            <element signature="e#1007#1008#0" expanded="true" />
+            <element signature="e#1053#1054#0" expanded="true" />
+            <element signature="e#1090#1091#0" expanded="true" />
+            <element signature="e#1125#1126#0" expanded="true" />
+            <element signature="e#1157#1158#0" expanded="true" />
           </folding>
         </state>
       </provider>
