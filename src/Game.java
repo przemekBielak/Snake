@@ -13,14 +13,8 @@ public class Game extends JPanel implements ActionListener{
     private int IMAGE_HEIGHT = 10;
     private int TIME_REFRESH_RATE = 100;
 
-    private ImageIcon snakeBodyIcon = new ImageIcon("Images/green.png");
-    private ImageIcon appleIcon = new ImageIcon("Images/red.png");
-    private Image snakeBodyImage = snakeBodyIcon.getImage();
-    private Image appleImage = appleIcon.getImage();
-
-    int applexPos = 0;
-    int appleyPos = 0;
-
+    private Apple apple = new Apple();
+    private Snake snake = new Snake();
     private Timer gameTimer;
 
     public Game() {
@@ -37,17 +31,15 @@ public class Game extends JPanel implements ActionListener{
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        g.drawImage(snakeBodyImage, 10, 10, this);
-        g.drawImage(snakeBodyImage, 20, 20, this);
-        g.drawImage(snakeBodyImage, 10, 20, this);
-        g.drawImage(appleImage, applexPos, appleyPos, this);
+        g.drawImage(snake.getSnakeImage(), snake.getxPos(), snake.getyPos(), this);
+        g.drawImage(apple.getAppleImage(), apple.getxPos(), apple.getyPos(), this);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        applexPos += 10;
-        appleyPos += 10;
+        apple.setxPos(apple.getxPos() + 10);
+        apple.setyPos(apple.getyPos() + 10);
         repaint();
     }
 }
