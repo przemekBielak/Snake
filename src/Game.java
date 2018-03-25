@@ -14,10 +14,10 @@ import java.util.Scanner;
 
 /*
     TODO:
-    [] finish game logic
-    [] show highest score
+    [V] finish game logic
+    [V] show highest score
     [] configurable size of the map - add second window with setting and PLAY button
-    [] show score on the screen
+    [V] show score on the screen
     [] add sound and pulsing sign when lost "Game Over"
  */
 
@@ -61,23 +61,7 @@ public class Game extends JPanel implements ActionListener{
             g.drawImage(apple.getAppleImage(), apple.getxPos(), apple.getyPos(), this);
         }
         else {
-            g.setFont(new Font("Invasion2000", Font.BOLD, 30));
-            g.setColor(Color.red);
-            g.drawString("Game Over", GAME_WINDOW_WIDTH/2 - 100, GAME_WINDOW_HEIGHT/2 - 50);
-
-            String scoreString = "Score: " + snake.getSnakeLen();
-            g.setFont(new Font("Invasion2000", Font.BOLD, 20));
-            g.setColor(Color.white);
-            g.drawString(scoreString, GAME_WINDOW_WIDTH/2 - 60, GAME_WINDOW_HEIGHT/2);
-
-            String highScoreString = "High Score: " + highScore;
-            g.setFont(new Font("Invasion2000", Font.BOLD, 20));
-            g.setColor(Color.white);
-            g.drawString(highScoreString, GAME_WINDOW_WIDTH/2 - 100, GAME_WINDOW_HEIGHT/2 + 50);
-
-            g.setFont(new Font("Invasion2000", Font.BOLD, 20));
-            g.setColor(Color.white);
-            g.drawString("Press Enter to play again", GAME_WINDOW_WIDTH/2 - 160, GAME_WINDOW_HEIGHT/2 + 100);
+            gameOverScreen(g);
         }
     }
 
@@ -173,4 +157,25 @@ public class Game extends JPanel implements ActionListener{
         snake.resetSnakeState();
         executeOnceFlag = true;
     }
+
+    public void gameOverScreen(Graphics g) {
+        g.setFont(new Font("Invasion2000", Font.BOLD, 30));
+        g.setColor(Color.red);
+        g.drawString("Game Over", GAME_WINDOW_WIDTH / 2 - 100, GAME_WINDOW_HEIGHT / 2 - 80);
+
+        String scoreString = "Score: " + snake.getSnakeLen();
+        g.setFont(new Font("Invasion2000", Font.BOLD, 20));
+        g.setColor(Color.white);
+        g.drawString(scoreString, 20, GAME_WINDOW_HEIGHT / 2);
+
+        String highScoreString = "Highest Score: " + highScore;
+        g.setFont(new Font("Invasion2000", Font.BOLD, 20));
+        g.setColor(Color.white);
+        g.drawString(highScoreString, 20, GAME_WINDOW_HEIGHT / 2 + 50);
+
+        g.setFont(new Font("Invasion2000", Font.BOLD, 20));
+        g.setColor(Color.white);
+        g.drawString("Press Enter to play again", 20, GAME_WINDOW_HEIGHT / 2 + 100);
+    }
+
 }
