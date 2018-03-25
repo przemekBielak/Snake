@@ -10,8 +10,7 @@ public class Snake {
         ,   DIRECTION_RIGHT
     }
 
-    private int SNAKE_IMAGE_WIDTH = 10;
-    private int SNAKE_IMAGE_HEIGHT = 10;
+    public static final int HEAD_POS = 0;
 
     private ImageIcon snakeIcon;
     private Image snakeImage;
@@ -19,6 +18,7 @@ public class Snake {
     private int xPos[];
     private int yPos[];
     private int snakeLen;
+    private boolean isAlive;
     private DirectionType direction;
 
     public DirectionType getDirection() {
@@ -57,10 +57,15 @@ public class Snake {
         return xPos[idx];
     }
 
+    public boolean isAlive() {
+        return isAlive;
+    }
+
     public Snake() {
         snakeIcon = new ImageIcon("Images/green.png");
         snakeImage = snakeIcon.getImage();
-        snakeLen = 20;
+        snakeLen = 3;
+        isAlive = true;
         direction = DirectionType.DIRECTION_UP;
         xPos = new int[1600];
         yPos = new int[1600];
@@ -81,47 +86,47 @@ public class Snake {
         /* Move head of the snake */
         switch (direction) {
             case DIRECTION_UP:
-                yPos[0] -= SNAKE_IMAGE_HEIGHT;
+                yPos[HEAD_POS] -= Game.IMAGE_HEIGHT;
                 break;
             case DIRECTION_DOWN:
-                yPos[0] += SNAKE_IMAGE_HEIGHT;
+                yPos[HEAD_POS] += Game.IMAGE_HEIGHT;
                 break;
             case DIRECTION_LEFT:
-                xPos[0] -= SNAKE_IMAGE_WIDTH;
+                xPos[HEAD_POS] -= Game.IMAGE_WIDTH;
                 break;
             case DIRECTION_RIGHT:
-                xPos[0] += SNAKE_IMAGE_WIDTH;
+                xPos[HEAD_POS] += Game.IMAGE_WIDTH;
                 break;
 
         }
     }
 
-    public boolean checkIfMovePossible(DirectionType dir) {
+    public boolean checkIfMovePossible() {
 
         boolean retVal = false;
 
-            if(dir == DirectionType.DIRECTION_UP) {
+            if(direction == DirectionType.DIRECTION_UP) {
                 if (direction == DirectionType.DIRECTION_DOWN) {
                     retVal = false;
                 } else {
                     retVal = true;
                 }
             }
-            if(dir == DirectionType.DIRECTION_DOWN) {
+            if(direction == DirectionType.DIRECTION_DOWN) {
                 if (direction == DirectionType.DIRECTION_UP) {
                     retVal = false;
                 } else {
                     retVal = true;
                 }
             }
-            if(dir == DirectionType.DIRECTION_LEFT) {
+            if(direction == DirectionType.DIRECTION_LEFT) {
                 if (direction == DirectionType.DIRECTION_RIGHT) {
                     retVal = false;
                 } else {
                     retVal = true;
                 }
             }
-            if(dir == DirectionType.DIRECTION_RIGHT) {
+            if(direction == DirectionType.DIRECTION_RIGHT) {
                 if (direction == DirectionType.DIRECTION_LEFT) {
                     retVal = false;
                 } else {
@@ -131,6 +136,24 @@ public class Snake {
 
         return retVal;
     }
+
+    public boolean checkIfAlive() {
+        for(int i = 1; i < snakeLen; i++) {
+            if( (xPos[HEAD_POS] == xPos[i]) && (yPos[HEAD_POS] == yPos[i]) ) {
+                isAlive = false;
+            }
+        }
+
+        if( (xPos[HEAD_POS] < 0) ||
+            (xPos[HEAD_POS] > Game.GAME_WINDOW_WIDTH - Game.IMAGE_WIDTH) ||
+            (yPos[HEAD_POS] < 0) ||
+            (yPos[HEAD_POS] > Game.GAME_WINDOW_HEIGHT - Game.IMAGE_HEIGHT) ) {
+            isAlive = false;
+        }
+
+        return isAlive;
+    }
+
 
 
 }

@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
 public class Apple {
     private int xPos;
@@ -33,6 +34,16 @@ public class Apple {
         appleImage = appleIcon.getImage();
         xPos = 240;
         yPos = 240;
+    }
+
+    public void setNewPos() {
+        Random rand = new Random();
+
+        int randRangex = rand.nextInt(Game.GAME_WINDOW_WIDTH - Game.IMAGE_WIDTH);
+        int randRangey= rand.nextInt(Game.GAME_WINDOW_HEIGHT - Game.IMAGE_HEIGHT);
+
+        this.xPos = randRangex / Game.IMAGE_WIDTH * Game.IMAGE_WIDTH;
+        this.yPos = randRangey / Game.IMAGE_HEIGHT* Game.IMAGE_HEIGHT;
     }
 
 }
