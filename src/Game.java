@@ -7,6 +7,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Scanner;
+
 /*
     TODO:
     [] finish game logic
@@ -23,10 +28,13 @@ public class Game extends JPanel implements ActionListener{
     public static final int IMAGE_WIDTH = 10;
     public static final int IMAGE_HEIGHT = 10;
     private int TIME_REFRESH_RATE = 100;
+    final String HIGHSCORE_FILENAME = "./src/highscore.txt";
 
     private Apple apple = new Apple();
     private Snake snake = new Snake();
     private Timer gameTimer;
+    private int highScore;
+    private boolean executeOnceFlag = true;
 
     public Game() {
 
@@ -55,12 +63,21 @@ public class Game extends JPanel implements ActionListener{
         else {
             g.setFont(new Font("Invasion2000", Font.BOLD, 30));
             g.setColor(Color.red);
-            g.drawString("Game Over", GAME_WINDOW_WIDTH/2 - 100, GAME_WINDOW_HEIGHT/2);
+            g.drawString("Game Over", GAME_WINDOW_WIDTH/2 - 100, GAME_WINDOW_HEIGHT/2 - 50);
 
             String scoreString = "Score: " + snake.getSnakeLen();
             g.setFont(new Font("Invasion2000", Font.BOLD, 20));
             g.setColor(Color.white);
-            g.drawString(scoreString, GAME_WINDOW_WIDTH/2 - 60, GAME_WINDOW_HEIGHT/2 + 50);
+            g.drawString(scoreString, GAME_WINDOW_WIDTH/2 - 60, GAME_WINDOW_HEIGHT/2);
+
+            String highScoreString = "High Score: " + highScore;
+            g.setFont(new Font("Invasion2000", Font.BOLD, 20));
+            g.setColor(Color.white);
+            g.drawString(highScoreString, GAME_WINDOW_WIDTH/2 - 100, GAME_WINDOW_HEIGHT/2 + 50);
+
+            g.setFont(new Font("Invasion2000", Font.BOLD, 20));
+            g.setColor(Color.white);
+            g.drawString("Press Enter to play again", GAME_WINDOW_WIDTH/2 - 160, GAME_WINDOW_HEIGHT/2 + 100);
         }
     }
 
@@ -71,6 +88,14 @@ public class Game extends JPanel implements ActionListener{
             checkPoints();
         }
         else {
+            if(executeOnceFlag) {
+                try {
+                    showHighScore();
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+                executeOnceFlag = false;
+            }
         }
 
         repaint();
@@ -103,6 +128,11 @@ public class Game extends JPanel implements ActionListener{
                     snake.setDirection(Snake.DirectionType.DIRECTION_RIGHT);
                 }
             }
+            else if(keyPressed == KeyEvent.VK_ENTER) {
+                if(!snake.isAlive()) {
+                    restartGame();
+                }
+            }
             else {
                 /* catch error or message that move not supported */
             }
@@ -114,5 +144,33 @@ public class Game extends JPanel implements ActionListener{
             snake.setSnakeLen(snake.getSnakeLen() + 1);
             apple.setNewPos();
         }
+    }
+
+    private void showHighScore() throws Exception {
+
+        FileReader freader = new FileReader(HIGHSCORE_FILENAME);
+        BufferedReader breader = new BufferedReader(freader);
+
+        String readHighScore = breader.readLine();
+        highScore = Integer.parseInt(readHighScore);
+        breader.close();
+
+        FileWriter fwriter = new FileWriter(HIGHSCORE_FILENAME);
+        BufferedWriter bwriter = new BufferedWriter(fwriter);
+
+        if(snake.getSnakeLen() > highScore) {
+            bwriter.write(Integer.toString(snake.getSnakeLen()));
+        }
+        else {
+            bwriter.write(readHighScore);
+        }
+        bwriter.close();
+
+
+    }
+
+    private void restartGame() {
+        snake.resetSnakeState();
+        executeOnceFlag = true;
     }
 }

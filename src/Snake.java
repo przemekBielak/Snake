@@ -154,6 +154,19 @@ public class Snake {
         return isAlive;
     }
 
+    public void resetSnakeState() {
+        snakeLen = 3;
+        isAlive = true;
+        direction = DirectionType.DIRECTION_UP;
+        xPos = new int[1600];
+        yPos = new int[1600];
+
+        for(int i = 0; i < snakeLen; i++) {
+            xPos[i] = 140;
+            yPos[i] = 140 + 10 * i;
+        }
+    }
+
 
 
 }
