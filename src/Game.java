@@ -1,6 +1,8 @@
+import javax.sound.sampled.*;
 import javax.swing.*;
 import javax.swing.Timer;
 
+import java.applet.Applet;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,9 +10,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.Scanner;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 /*
     TODO:
@@ -28,13 +29,24 @@ public class Game extends JPanel implements ActionListener{
     public static final int IMAGE_WIDTH = 10;
     public static final int IMAGE_HEIGHT = 10;
     private int TIME_REFRESH_RATE = 100;
+    
     final String HIGHSCORE_FILENAME = "./src/highscore.txt";
+
+    /* https://freesound.org/people/myfox14/sounds/382310/ */
+    final String GAMEOVER_SOUND = "./Sounds/gameover.wav";
+
+    /* https://freesound.org/people/niamhd00145229/sounds/422709/ */
+    final String POINT_SOUND = "./Sounds/point.wav";
+
+    private int highScore;
+    private boolean executeOnceFlag = true;
 
     private Apple apple = new Apple();
     private Snake snake = new Snake();
     private Timer gameTimer;
-    private int highScore;
-    private boolean executeOnceFlag = true;
+
+
+
 
     public Game() {
 
@@ -47,7 +59,6 @@ public class Game extends JPanel implements ActionListener{
         /* Start Timer */
         gameTimer = new Timer(TIME_REFRESH_RATE, this);
         gameTimer.start();
-
     }
 
     @Override
@@ -77,7 +88,19 @@ public class Game extends JPanel implements ActionListener{
                     showHighScore();
                 } catch (Exception e1) {
                     e1.printStackTrace();
+                };
+
+                try {
+                    playSound(GAMEOVER_SOUND);
+                } catch (LineUnavailableException e1) {
+                    e1.printStackTrace();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                } catch (UnsupportedAudioFileException e1) {
+                    e1.printStackTrace();
                 }
+
+
                 executeOnceFlag = false;
             }
         }
@@ -127,6 +150,15 @@ public class Game extends JPanel implements ActionListener{
         if( (snake.getxPos(Snake.HEAD_POS) == apple.getxPos()) && (snake.getyPos(Snake.HEAD_POS) == apple.getyPos()) ) {
             snake.setSnakeLen(snake.getSnakeLen() + 1);
             apple.setNewPos();
+            try {
+                playSound(POINT_SOUND);
+            } catch (LineUnavailableException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (UnsupportedAudioFileException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -149,8 +181,6 @@ public class Game extends JPanel implements ActionListener{
             bwriter.write(readHighScore);
         }
         bwriter.close();
-
-
     }
 
     private void restartGame() {
@@ -158,7 +188,7 @@ public class Game extends JPanel implements ActionListener{
         executeOnceFlag = true;
     }
 
-    public void gameOverScreen(Graphics g) {
+    private void gameOverScreen(Graphics g) {
         g.setFont(new Font("Invasion2000", Font.BOLD, 30));
         g.setColor(Color.red);
         g.drawString("Game Over", GAME_WINDOW_WIDTH / 2 - 100, GAME_WINDOW_HEIGHT / 2 - 80);
@@ -176,6 +206,15 @@ public class Game extends JPanel implements ActionListener{
         g.setFont(new Font("Invasion2000", Font.BOLD, 20));
         g.setColor(Color.white);
         g.drawString("Press Enter to play again", 20, GAME_WINDOW_HEIGHT / 2 + 100);
+    }
+
+    private void playSound(String wavPath) throws LineUnavailableException, IOException, UnsupportedAudioFileException {
+        AudioInputStream audioStream = null;
+        File soundFile = new File(wavPath);
+        audioStream = AudioSystem.getAudioInputStream(soundFile.toURI().toURL());
+        Clip clip = AudioSystem.getClip();
+        clip.open(audioStream);
+        clip.start();
     }
 
 }
