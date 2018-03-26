@@ -17,9 +17,9 @@ import java.net.URL;
     TODO:
     [V] finish game logic
     [V] show highest score
-    [] configurable size of the map - add second window with setting and PLAY button
+    [X] configurable size of the map - add second window with setting and PLAY button
     [V] show score on the screen
-    [] add sound and pulsing sign when lost "Game Over"
+    [V] add sound and pulsing sign when lost "Game Over"
  */
 
 public class Game extends JPanel implements ActionListener{
@@ -29,7 +29,7 @@ public class Game extends JPanel implements ActionListener{
     public static final int IMAGE_WIDTH = 10;
     public static final int IMAGE_HEIGHT = 10;
     private int TIME_REFRESH_RATE = 100;
-    
+
     final String HIGHSCORE_FILENAME = "./src/highscore.txt";
 
     /* https://freesound.org/people/myfox14/sounds/382310/ */
@@ -194,16 +194,16 @@ public class Game extends JPanel implements ActionListener{
         g.drawString("Game Over", GAME_WINDOW_WIDTH / 2 - 100, GAME_WINDOW_HEIGHT / 2 - 80);
 
         String scoreString = "Score: " + snake.getSnakeLen();
-        g.setFont(new Font("Invasion2000", Font.BOLD, 20));
+        g.setFont(new Font("Invasion2000", Font.PLAIN, 20));
         g.setColor(Color.white);
         g.drawString(scoreString, 20, GAME_WINDOW_HEIGHT / 2);
 
         String highScoreString = "Highest Score: " + highScore;
-        g.setFont(new Font("Invasion2000", Font.BOLD, 20));
+        g.setFont(new Font("Invasion2000", Font.PLAIN, 20));
         g.setColor(Color.white);
         g.drawString(highScoreString, 20, GAME_WINDOW_HEIGHT / 2 + 50);
 
-        g.setFont(new Font("Invasion2000", Font.BOLD, 20));
+        g.setFont(new Font("Invasion2000", Font.PLAIN, 20));
         g.setColor(Color.white);
         g.drawString("Press Enter to play again", 20, GAME_WINDOW_HEIGHT / 2 + 100);
     }
