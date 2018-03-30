@@ -30,7 +30,14 @@ public class Game extends JPanel implements ActionListener{
     public static final int IMAGE_HEIGHT = 10;
     private int TIME_REFRESH_RATE = 100;
 
-    final String HIGHSCORE_FILENAME = "./src/highscore.txt";
+    // "./src/highscore.txt"
+
+    public static String HIGHSCORE_FILENAME = "";
+
+    public static void setHIGHSCORE_FILENAME(String score) {
+        HIGHSCORE_FILENAME = score;
+    }
+
 
     /* https://freesound.org/people/myfox14/sounds/382310/ */
     final URL GAMEOVER_SOUND = (getClass().getResource("Sounds/gameover.wav"));
