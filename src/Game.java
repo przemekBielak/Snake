@@ -32,10 +32,10 @@ public class Game extends JPanel implements ActionListener{
 
     // "./src/highscore.txt"
 
-    public static String HIGHSCORE_FILENAME = "";
+    private static String highscoreFilename = "";
 
-    public static void setHIGHSCORE_FILENAME(String score) {
-        HIGHSCORE_FILENAME = score;
+    public static void sethighscoreFilename(String score) {
+        highscoreFilename = score;
     }
 
 
@@ -171,14 +171,14 @@ public class Game extends JPanel implements ActionListener{
 
     private void showHighScore() throws Exception {
 
-        FileReader freader = new FileReader(HIGHSCORE_FILENAME);
+        FileReader freader = new FileReader(highscoreFilename);
         BufferedReader breader = new BufferedReader(freader);
 
         String readHighScore = breader.readLine();
         highScore = Integer.parseInt(readHighScore);
         breader.close();
 
-        FileWriter fwriter = new FileWriter(HIGHSCORE_FILENAME);
+        FileWriter fwriter = new FileWriter(highscoreFilename);
         BufferedWriter bwriter = new BufferedWriter(fwriter);
 
         if(snake.getSnakeLen() > highScore) {

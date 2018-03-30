@@ -46,7 +46,7 @@ public class Application extends JFrame{
                         JFileChooser chooser = new JFileChooser();
                         int returnVal = chooser.showOpenDialog(null);
                         if(returnVal == JFileChooser.APPROVE_OPTION) {
-                            Game.HIGHSCORE_FILENAME = (chooser.getSelectedFile().getAbsolutePath());
+                            Game.sethighscoreFilename(chooser.getSelectedFile().getAbsolutePath());
 //                            System.out.println(chooser.getSelectedFile().getName());
                         }
                     }
