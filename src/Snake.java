@@ -62,7 +62,7 @@ public class Snake {
     }
 
     public Snake() {
-        snakeIcon = new ImageIcon("Images/green.png");
+        snakeIcon = new ImageIcon(getClass().getResource("Images/green.png"));
         snakeImage = snakeIcon.getImage();
         snakeLen = 3;
         isAlive = true;

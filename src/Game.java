@@ -33,10 +33,10 @@ public class Game extends JPanel implements ActionListener{
     final String HIGHSCORE_FILENAME = "./src/highscore.txt";
 
     /* https://freesound.org/people/myfox14/sounds/382310/ */
-    final String GAMEOVER_SOUND = "./Sounds/gameover.wav";
+    final URL GAMEOVER_SOUND = (getClass().getResource("Sounds/gameover.wav"));
 
     /* https://freesound.org/people/niamhd00145229/sounds/422709/ */
-    final String POINT_SOUND = "./Sounds/point.wav";
+    final URL POINT_SOUND = (getClass().getResource("Sounds/point.wav"));
 
     private int highScore;
     private boolean executeOnceFlag = true;
@@ -208,10 +208,9 @@ public class Game extends JPanel implements ActionListener{
         g.drawString("Press Enter to play again", 20, GAME_WINDOW_HEIGHT / 2 + 100);
     }
 
-    private void playSound(String wavPath) throws LineUnavailableException, IOException, UnsupportedAudioFileException {
+    private void playSound(URL wavPath) throws LineUnavailableException, IOException, UnsupportedAudioFileException {
         AudioInputStream audioStream = null;
-        File soundFile = new File(wavPath);
-        audioStream = AudioSystem.getAudioInputStream(soundFile.toURI().toURL());
+        audioStream = AudioSystem.getAudioInputStream(wavPath);
         Clip clip = AudioSystem.getClip();
         clip.open(audioStream);
         clip.start();
