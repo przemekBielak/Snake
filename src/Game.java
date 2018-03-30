@@ -91,11 +91,14 @@ public class Game extends JPanel implements ActionListener{
         }
         else {
             if(executeOnceFlag) {
-                try {
-                    showHighScore();
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                };
+                if(highscoreFilename != "") {
+                    try {
+                        showHighScore();
+                    } catch (Exception e1) {
+                        e1.printStackTrace();
+                    }
+                    ;
+                }
 
                 try {
                     playSound(GAMEOVER_SOUND);
@@ -111,6 +114,7 @@ public class Game extends JPanel implements ActionListener{
                 executeOnceFlag = false;
             }
         }
+
 
         repaint();
     }
@@ -205,10 +209,12 @@ public class Game extends JPanel implements ActionListener{
         g.setColor(Color.white);
         g.drawString(scoreString, 20, GAME_WINDOW_HEIGHT / 2);
 
-        String highScoreString = "Highest Score: " + highScore;
-        g.setFont(new Font("Invasion2000", Font.PLAIN, 20));
-        g.setColor(Color.white);
-        g.drawString(highScoreString, 20, GAME_WINDOW_HEIGHT / 2 + 50);
+        if(highscoreFilename != "") {
+            String highScoreString = "Highest Score: " + highScore;
+            g.setFont(new Font("Invasion2000", Font.PLAIN, 20));
+            g.setColor(Color.white);
+            g.drawString(highScoreString, 20, GAME_WINDOW_HEIGHT / 2 + 50);
+        }
 
         g.setFont(new Font("Invasion2000", Font.PLAIN, 20));
         g.setColor(Color.white);
