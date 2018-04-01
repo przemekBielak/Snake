@@ -1,8 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
 
+/** Snake is a template for snake. */
 public class Snake {
 
+    /** DirectionType is storing all possible directions of snake. */
     public enum DirectionType {
             DIRECTION_UP
         ,   DIRECTION_DOWN
@@ -10,15 +12,23 @@ public class Snake {
         ,   DIRECTION_RIGHT
     }
 
-    public static final int HEAD_POS = 0;
-
-    private ImageIcon snakeIcon;
-    private Image snakeImage;
-
+    /** Snakes points are implemented in two arrays.
+     * Each point of snake is represented as an index value of xPos and yPos. */
     private int xPos[];
     private int yPos[];
     private int snakeLen;
+
+    /** Head of the snake is always at index 0 of both xPos and yPos arrays. */
+    public static final int HEAD_POS = 0;
+
+    /** Each snake point is represented by icon selected in snakeIcon. */
+    private ImageIcon snakeIcon;
+    private Image snakeImage;
+
+    /** isAlive is used as a state of game - ongoing or finished. */
     private boolean isAlive;
+
+    /** direction holds currently selected direction of the snake. */
     private DirectionType direction;
 
     public DirectionType getDirection() {
