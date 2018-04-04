@@ -18,40 +18,38 @@ import java.net.URL;
  */
 public class Game extends JPanel implements ActionListener{
 
-    /* \defgroup sizes Global window/graphics sizes
-     * Define game window and graphics sizes
-     * @{
-     */
     /** Game window width */
     public static final int GAME_WINDOW_WIDTH = 400;
     /** Game window height */
     public static final int GAME_WINDOW_HEIGHT = 400;
+    /** Image width */
     public static final int IMAGE_WIDTH = 10;
+    /** Image height */
     public static final int IMAGE_HEIGHT = 10;
-    /** @} */
 
 
-    /** Game specific variables */
+
+    /** refresh rate */
     private final int TIME_REFRESH_RATE = 100;
+    /** variable to store hightest score read from .txt file. */
     private int highScore;
     private boolean executeOnceFlag = true;
     /** Sound created by: https://freesound.org/people/myfox14/sounds/382310/ */
     private final URL GAMEOVER_SOUND = (getClass().getResource("Sounds/gameover.wav"));
     /** Sound created by: https://freesound.org/people/niamhd00145229/sounds/422709/ */
     private final URL POINT_SOUND = (getClass().getResource("Sounds/point.wav"));
+    /** Initial path to highscore file. */
     private static String highscoreFilename = "";
 
     public static void sethighscoreFilename(String score) {
         highscoreFilename = score;
     }
 
-    /** Create game objects */
     private Apple apple = new Apple();
     private Snake snake = new Snake();
     private Timer gameTimer;
 
-    /** Game class constructor starts game
-     */
+    /** Game class constructor starts game */
     public Game() {
 
         addKeyListener(new KeyboardChecker());
@@ -86,6 +84,7 @@ public class Game extends JPanel implements ActionListener{
     }
 
     @Override
+    /** Executes after gameTimer overflow */
     public void actionPerformed(ActionEvent e) {
         /** Update snake position if game is ongoing */
         if(snake.checkIfAlive()) {

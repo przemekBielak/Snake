@@ -1,7 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
 
-/** Snake is a template for snake. */
+/** Snake class is a template for snake.
+ * Class contains all snake related fields and methods like length and move.
+ */
 public class Snake {
 
     /** DirectionType is storing all possible directions of snake. */
@@ -12,7 +14,7 @@ public class Snake {
         ,   DIRECTION_RIGHT
     }
 
-    /** Snakes points are implemented in two arrays.
+    /* Snakes points are implemented in two arrays.
      * Each point of snake is represented as an index value of xPos and yPos. */
     private int xPos[];
     private int yPos[];
@@ -31,46 +33,61 @@ public class Snake {
     /** direction holds currently selected direction of the snake. */
     private DirectionType direction;
 
+    /** direction getter. */
     public DirectionType getDirection() {
         return direction;
     }
 
+    /** direction setter. */
     public void setDirection(DirectionType direction) {
         this.direction = direction;
     }
 
+    /** snakeLen getter. */
     public int getSnakeLen() {
         return snakeLen;
     }
 
+    /** snakeLen setter. */
     public void setSnakeLen(int snakeLen) {
         this.snakeLen = snakeLen;
     }
 
+    /** snakeImage getter. */
     public Image getSnakeImage() {
         return snakeImage;
     }
 
+    /** yPos getter. */
     public int getyPos(int idx) {
         return yPos[idx];
     }
 
+    /** yPos setter. */
     public void setyPos(int yPos, int idx) {
         this.yPos[idx] = yPos;
     }
 
+    /** xPos setter. */
     public void setxPos(int xPos, int idx) {
         this.xPos[idx] = xPos;
     }
 
+    /** xPos getter. */
     public int getxPos(int idx) {
         return xPos[idx];
     }
 
+    /** isAlive getter. */
     public boolean isAlive() {
         return isAlive;
     }
 
+    /**
+     * Snake class constructor.
+     * Function updates snake image, sets default length, direction and x/y coordinates.
+     * Places snake on the game board.
+     */
     public Snake() {
         snakeIcon = new ImageIcon(getClass().getResource("Images/green.png"));
         snakeImage = snakeIcon.getImage();
@@ -86,6 +103,11 @@ public class Snake {
         }
     }
 
+    /**
+     * Moves Snake.
+     * Based on previously set direction, functino updates each snake
+     * element x/y position.
+     */
     public void move() {
         /* Move body of the snake */
         for(int i = snakeLen; i > 0; i--) {
@@ -111,6 +133,10 @@ public class Snake {
         }
     }
 
+    /**
+     * Checks if snakes move is possible.
+     * For example snake can't move left if it was going right.
+     */
     public boolean checkIfMovePossible() {
 
         boolean retVal = false;
@@ -147,6 +173,11 @@ public class Snake {
         return retVal;
     }
 
+    /**
+     * Checks if snakes is alive.
+     * If snakes head goes outside of game board, or touches itself,
+     * function sets isAlive variable to false.
+     */
     public boolean checkIfAlive() {
         for(int i = 1; i < snakeLen; i++) {
             if( (xPos[HEAD_POS] == xPos[i]) && (yPos[HEAD_POS] == yPos[i]) ) {
@@ -164,6 +195,9 @@ public class Snake {
         return isAlive;
     }
 
+    /**
+     * Resets snakes length, direction and position on board to default values.
+     */
     public void resetSnakeState() {
         snakeLen = 3;
         isAlive = true;
