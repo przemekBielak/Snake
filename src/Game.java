@@ -223,23 +223,23 @@ public class Game extends JPanel implements ActionListener{
      * sigh will be shown.
      */
     private void gameOverScreen(Graphics g) {
-        g.setFont(new Font("Invasion2000", Font.BOLD, 30));
+        g.setFont(new Font("Impact", Font.ITALIC, 30));
         g.setColor(Color.red);
-        g.drawString("Game Over", GAME_WINDOW_WIDTH / 2 - 100, GAME_WINDOW_HEIGHT / 2 - 80);
+        g.drawString("Game Over", GAME_WINDOW_WIDTH / 2 - 75, GAME_WINDOW_HEIGHT / 2 - 80);
 
         String scoreString = "Score: " + snake.getSnakeLen();
-        g.setFont(new Font("Invasion2000", Font.PLAIN, 20));
+        g.setFont(new Font("Impact", Font.ITALIC, 20));
         g.setColor(Color.white);
         g.drawString(scoreString, 20, GAME_WINDOW_HEIGHT / 2);
 
         if(highscoreFilename != "") {
             String highScoreString = "Highest Score: " + highScore;
-            g.setFont(new Font("Invasion2000", Font.PLAIN, 20));
+            g.setFont(new Font("Impact", Font.ITALIC, 20));
             g.setColor(Color.white);
             g.drawString(highScoreString, 20, GAME_WINDOW_HEIGHT / 2 + 50);
         }
 
-        g.setFont(new Font("Invasion2000", Font.PLAIN, 20));
+        g.setFont(new Font("Impact", Font.ITALIC, 20));
         g.setColor(Color.white);
         g.drawString("Press Enter to play again", 20, GAME_WINDOW_HEIGHT / 2 + 100);
     }
