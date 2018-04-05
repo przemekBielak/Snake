@@ -12,27 +12,42 @@ public class Apple {
     /** Stores Image */
     private Image appleImage;
 
-    /** appleImage getter. */
+    /**
+     * appleImage getter.
+     * @return  appleImage  apple image.
+     */
     public Image getAppleImage() {
         return appleImage;
     }
 
-    /** yPos getter. */
+    /**
+     * yPos getter.
+     * @return  yPos    yPos of apple image.
+     */
     public int getyPos() {
         return yPos;
     }
 
-    /** yPos setter. */
+    /**
+     * yPos setter.
+     * @param   yPos    yPos of apple image.
+     */
     public void setyPos(int yPos) {
         this.yPos = yPos;
     }
 
-    /** xPos setter. */
+    /**
+     * xPos setter.
+     * @param   xPos    xPos of apple image.
+     */
     public void setxPos(int xPos) {
         this.xPos = xPos;
     }
 
-    /** xPos getter. */
+    /**
+     * xPos getter.
+     * @return  xPos    xPos of apple image.
+     */
     public int getxPos() {
         return xPos;
     }

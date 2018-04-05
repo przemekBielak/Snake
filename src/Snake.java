@@ -33,52 +33,86 @@ public class Snake {
     /** direction holds currently selected direction of the snake. */
     private DirectionType direction;
 
-    /** direction getter. */
+    /**
+     * direction getter.
+     * @return  direction    direction of snake.
+     */
     public DirectionType getDirection() {
         return direction;
     }
 
-    /** direction setter. */
+    /**
+     * direction setter.
+     * @param   direction   direction of snake.
+     */
     public void setDirection(DirectionType direction) {
         this.direction = direction;
     }
 
-    /** snakeLen getter. */
+    /**
+     * snakeLen getter.
+     * @return  snakeLen    snake length.
+     */
     public int getSnakeLen() {
         return snakeLen;
     }
 
-    /** snakeLen setter. */
+    /**
+     * snakeLen setter.
+     * @param   snakeLen    snake length.
+     */
     public void setSnakeLen(int snakeLen) {
         this.snakeLen = snakeLen;
     }
 
-    /** snakeImage getter. */
+    /**
+     * snakeImage getter.
+     * @return  snakeImage  snake image.
+     */
     public Image getSnakeImage() {
         return snakeImage;
     }
 
-    /** yPos getter. */
+    /**
+     * yPos getter.
+     * @param   idx         index of yPos array.
+     * @return  yPos[idx]   value of idx element of yPos array.
+     */
     public int getyPos(int idx) {
         return yPos[idx];
     }
 
-    /** yPos setter. */
+    /**
+     * yPos setter.
+     * @param   yPos    value of yPos element.
+     * @param   idx     index of yPos array.
+     */
     public void setyPos(int yPos, int idx) {
         this.yPos[idx] = yPos;
     }
 
-    /** xPos setter. */
+    /**
+     * xPos setter.
+     * @param   xPos    value of xPos element.
+     * @param   idx     index of xPos array.
+     */
     public void setxPos(int xPos, int idx) {
         this.xPos[idx] = xPos;
     }
 
-    /** xPos getter. */
+    /**
+     * xPos getter.
+     * @param   idx         index of yPos array.
+     * @return  xPos[idx]   value of idx element of xPos array.
+     */
     public int getxPos(int idx) {
         return xPos[idx];
     }
 
-    /** isAlive getter. */
+    /**
+     * isAlive getter.
+     * @return  isAlive     true if snake is alive.
+     */
     public boolean isAlive() {
         return isAlive;
     }
@@ -136,6 +170,7 @@ public class Snake {
     /**
      * Checks if snakes move is possible.
      * For example snake can't move left if it was going right.
+     * @return  retVal  true if move possible.
      */
     public boolean checkIfMovePossible() {
 
@@ -177,6 +212,7 @@ public class Snake {
      * Checks if snakes is alive.
      * If snakes head goes outside of game board, or touches itself,
      * function sets isAlive variable to false.
+     * @return  isAlive true if snake is alive.
      */
     public boolean checkIfAlive() {
         for(int i = 1; i < snakeLen; i++) {
